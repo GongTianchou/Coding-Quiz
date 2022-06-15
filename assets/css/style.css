@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align:center;
+  } 
+body {
+    font-size:16px;
+    font-family: 'Times New Roman', Times, serif;
+    display:flex;
+    justify-content: flex-start; 
+}
+.btn {
+    background-color: aquamarine;
+    color:black;
+}
+.answers {
+    margin:6px;
+}
+
+#Highscore {
+    float:left;
+    color: blueviolet;
+}
+
+#Timeleft {
+    float:right;
+    color:blueviolet;
+}
+
+#care {
+    color: red;
+}
+#homepage {
+    padding:5px;
+}
+#quizpage {
+    padding: 5px;
+}
+#question,
+#completepage,
+#highscorepage,
+#score
+{
+    display:none;
+}
+
+#history {
+    background-color: blanchedalmond;
+}
+
+#score {
+    padding: 6px;
+    margin: 6px;
+    border:1px solid black;
+}
+
+
+
+
+
+
+
+
+
