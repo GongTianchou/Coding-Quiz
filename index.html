@@ -11,13 +11,13 @@
 <body>
     <header> 
     <div id="Highscore">View Highscore</div> 
-    <div id="timeleft">Time left</div>
+    <div id="Timeleft">Time left:</div>
     </header>
     
     <div id="homepage">
         <h2>Coding Quiz Challenge</h2>
         <p>Try to andwer the following questions withnin the time limit.</p>
-        <p>Keep in mind that the incorrect answers will reduce the time by 10 seconds </p>
+        <p id="care">Keep in mind that the incorrect answers will reduce the time by 10 seconds </p>
         <button id="start" class="btn">Start Quiz</button>
     </div>
 
@@ -39,4 +39,23 @@
             
             <div id="score" class="score"></div>
     </div>
-   
+    <div id="completepage">
+        <h2>All Done!</h2>
+        <p id="finalscore"></p>
+        <p>Enter Initials:</p>
+        <input type="text" id="initials">
+        <button id="submit" class="btn">Submit</button>
+        <div id="currentscore" class="score"></div>
+    </div>
+    <div id="highscorepage">
+        <h2>Highscores</h2>
+        <div>
+            <ol id="history"></ol>
+        </div>
+        <button id="back" class="btn">Go Back</button>
+        <button id="clear" class="btn">Clear Highscores</button>
+    </div>
+
+    <script src="./assets/js/script.js"></script>   
+</body>
+</html>
