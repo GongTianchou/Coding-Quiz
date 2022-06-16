@@ -9,19 +9,21 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header> 
-    <div id="Highscore">View Highscore</div> 
-    <div id="Timeleft">Time left:</div>
+    <header class="row"> 
+    <div id="highscore" class="col-6"  >View Highscore</div> 
+    <div id="timeleft" class="col-6" >Time left:</div>
     </header>
+    <!-- <div class="w-100"></div> -->
+    <main class="card">
+        <div id="homepage">
+            <h2>Coding Quiz Challenge</h2>
+            <p>Try to andwer the following questions withnin the time limit.</p>
+            <p id="care">Keep in mind that the incorrect answers will reduce the time by 10 seconds </p>
+            <button id="start" class="btn">Start Quiz</button>
+        </div>
     
-    <div id="homepage">
-        <h2>Coding Quiz Challenge</h2>
-        <p>Try to andwer the following questions withnin the time limit.</p>
-        <p id="care">Keep in mind that the incorrect answers will reduce the time by 10 seconds </p>
-        <button id="start" class="btn">Start Quiz</button>
-    </div>
-
-    <div id="quizpage">
+ 
+    <div id="quizpage" >
         <div id="question"></div>
         <h2 id="quiz"></h2>
             <div>
@@ -55,6 +57,7 @@
         <button id="back" class="btn">Go Back</button>
         <button id="clear" class="btn">Clear Highscores</button>
     </div>
+    </main>
 
     <script src="./assets/js/script.js"></script>   
 </body>
