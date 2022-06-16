@@ -28,7 +28,7 @@ startEl.addEventListener("click",function(){
             timeLeft --;
         } else {
             hideAllPages();
-            initializeCompletepage();
+            initializedcompletepage();
         }
     },
     1000);
