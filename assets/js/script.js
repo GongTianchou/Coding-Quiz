@@ -14,19 +14,21 @@ var answerEl = document.getElementsByClassName('answers')
 var backEl = document.getElementById('back');
 var clearEL = document.getElementById('clear');
 var HighscoreEL = document.getElementById('Highscore');
-var hisotryEl = document.getElementById("history");
+var historyEl = document.getElementById("history");
 var submitButtonEl = document.getElementById("submit");
+var timeLeft;
+var quizindex;
 
 
 startEl.addEventListener("click",function(){
     var timeLeft = 77;
-    var quizScore = 0;
+    var quizindex = 0;
     var timeInterval;
     hideAllPages();
     document.getElementById("question").style.display="block";
     timeInterval= setInterval(function(){
-        if(timeLeft >1){
-            timeEL.textContent = "Time Left" + timeLeft;
+        if(timeLeft >= 1){
+            timeEL.textContent = 'Time Left:' + timeLeft;
             timeLeft --;
         } else {
             hideAllPages();
@@ -34,27 +36,27 @@ startEl.addEventListener("click",function(){
         }
     },
     1000);
-    initializedQuestion(quizScore);
+    initializedQuestion(quizindex);
 })
 
 for(var i = 0; i<answerEl.length; i++) {
     answerEl[i].addEventListener("click",function(){
         var selection = target.value;
         var result ="";
-        if(selection === correctAnswer[quizScore]){
+        if(selection === correctAnswer[quizindex]){
             result ="Correct";
         } else{
             result = "Wrong";
             timeLeft = timeLeft - 7;
         }
-        quizScore ++;
-        initializedQuestion(quizScore);
+        quizindex ++;
+        initializedQuestion(quizindex);
         var resultEl;
-        if(quizScore<questions.length){
+        if(quizindex<question.length){
             resultEl = document.getElementById("score");
 
         } else {
-            quizScore = 0;
+            quizindex = 0;
             resultEl = document.getElementById("currentscore");
         }
         resultEl.textContent = result;
@@ -74,7 +76,7 @@ function hideAllPages(){
 
 
 function initializedQuestion(index){
-    if (index >= questions.length){
+    if (index >= question.length){
         hideAllPages();
         initializedcompletepage();
     } else {
@@ -101,7 +103,7 @@ function initializedcompletepage(){
     document.getElementById("finalscore").textContent= "Final Score is" + timeLeft;   
 }
 
-submitButton.addEventListener("click",function(){
+submitButtonEl.addEventListener("click",function(){
     var username = document.getElementById("initials").value;
     if (username === ""){
         alert("please enter your initials");

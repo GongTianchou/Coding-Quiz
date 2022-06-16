@@ -45,8 +45,8 @@ body {
 #question,
 #completepage,
 #highscorepage,
-#score,
-#A,#B,#C,#D
+#score
+/* #A,#B,#C,#D */
 {
     display:none;
 }
