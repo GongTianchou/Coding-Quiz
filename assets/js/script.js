@@ -14,6 +14,8 @@ var answerEl = document.getElementsByClassName('answers')
 var backEl = document.getElementById('back');
 var clearEL = document.getElementById('clear');
 var HighscoreEL = document.getElementById('Highscore');
+var hisotryEl = document.getElementById("history");
+var submitButtonEl = document.getElementById("submit");
 
 
 startEl.addEventListener("click",function(){
@@ -128,9 +130,8 @@ backEl.addEventListener("click",function(){
     document.getElementById("highscore").style.display = "block";
 });
 
-clearEL.addEventListener("click",funtion(){
+clearEL.addEventListener("click",function() {
     document.getElementById("history").innerHTML="";
-
 });
 
 historyEl.addEventListener("click",function(){
