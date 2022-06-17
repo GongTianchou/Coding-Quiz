@@ -8,28 +8,48 @@ var answerC =["Hypertext Markup Language","//","1","target"]
 var answerD =["Hightext machine language","!","5","ref"]
 var correctAnswer = ["C","B","A","C"]
 
-var timeEL = document.getElementById('Timeleft');
+var timeEL = document.getElementById('timeleft');
 var startEl = document.getElementById('start');
 var answerEl = document.getElementsByClassName('answers')
 var backEl = document.getElementById('back');
 var clearEL = document.getElementById('clear');
-var HighscoreEL = document.getElementById('Highscore');
+var HighscoreEL = document.getElementById('highscore');
 var historyEl = document.getElementById("history");
 var submitButtonEl = document.getElementById("submit");
 var timeLeft;
 var quizindex;
+var timeInterval;
+var timeLeft = 77;
+var quizindex = 0;
 
+
+function initializedQuestion(index){
+    if (index >= question.length){
+        hideAllPages();
+        initializedcompletepage();
+    } else {
+        var currentquestion = question[index];
+        var currentAnswerA = answerA[index];
+        var currentAnswerB = answerB[index];
+        var currentAnswerC = answerC[index];
+        var currentAnswerD = answerD[index];
+        document.getElementById("quiz").innerHTML = currentquestion;
+        document.getElementById("A").textContent = "A" + currentAnswerA;
+        document.getElementById("B").textContent = "B" + currentAnswerB;
+        document.getElementById("C").textContent = "C" + currentAnswerC;
+        document.getElementById("D").textContent = "D" + currentAnswerD;
+    }   
+}
 
 startEl.addEventListener("click",function(){
-    var timeLeft = 77;
-    var quizindex = 0;
-    var timeInterval;
     hideAllPages();
     document.getElementById("question").style.display="block";
+    document.getElementById("quizpage").style.display = "block";
     timeInterval= setInterval(function(){
-        if(timeLeft >= 1){
+        if(timeLeft >=0){
+            timeLeft--;
             timeEL.textContent = 'Time Left:' + timeLeft;
-            timeLeft --;
+            
         } else {
             hideAllPages();
             initializedcompletepage();
@@ -40,8 +60,9 @@ startEl.addEventListener("click",function(){
 })
 
 for(var i = 0; i<answerEl.length; i++) {
-    answerEl[i].addEventListener("click",function(){
-        var selection = target.value;
+    answerEl[i].addEventListener("click",function(event){
+        event.preventDefault();
+        var selection = event.target.value;
         var result ="";
         if(selection === correctAnswer[quizindex]){
             result ="Correct";
@@ -63,34 +84,8 @@ for(var i = 0; i<answerEl.length; i++) {
         resultEl.style.display = "block";
         setTimeout(()=>{
             resultEl.style.display="none";
-        },1000)
+        },100)
     });
-}
-
-function hideAllPages(){
-    document.getElementById("homepage").style.display = "none";
-    document.getElementById("quizpage").style.display = "none";
-    document.getElementById("completepage").style.display = "none";
-    document.getElementById("highscorepage").style.display = "none";
-}
-
-
-function initializedQuestion(index){
-    if (index >= question.length){
-        hideAllPages();
-        initializedcompletepage();
-    } else {
-        var currentquestion = question[index];
-        var currentAnswerA = answerA[index];
-        var currentAnswerB = answerB[index];
-        var currentAnswerC = answerC[index];
-        var currentAnswerD = answerD[index];
-        document.getElementById("quiz").textContent = currentquestion;
-        document.getElementById("A").textContent = "A" + currentAnswerA;
-        document.getElementById("B").textContent = "B" + currentAnswerB;
-        document.getElementById("C").textContent = "C" + currentAnswerC;
-        document.getElementById("D").textContent = "D" + currentAnswerD;
-    }   
 }
 
 function initializedcompletepage(){
@@ -98,10 +93,27 @@ function initializedcompletepage(){
         clearInterval(timeInterval);
 
     },1000)
+    document.getElementById("quizpage").style.display = "none"; 
     document.getElementById("initials").value="";
     document.getElementById("completepage").style.display="block";
-    document.getElementById("finalscore").textContent= "Final Score is" + timeLeft;   
+    document.getElementById("finalscore").textContent= "Final Score is " + timeLeft;   
 }
+
+function hideAllPages(){
+    
+    // if(clearInterval()){
+    // document.getElementById("quizpage").style.display = "none"; 
+    // }  else {
+    document.getElementById("homepage").style.display = "none";
+    document.getElementById("completepage").style.display = "none";
+    document.getElementById("highscorepage").style.display = "none";
+    // } 
+}
+
+
+
+
+
 
 submitButtonEl.addEventListener("click",function(){
     var username = document.getElementById("initials").value;
@@ -128,6 +140,7 @@ backEl.addEventListener("click",function(){
     hideAllPages();
     document.getElementById("homepage").style.display = "block";
     document.getElementById("timeleft").textContent = "Time Left : 0";
+    // document.getElementById("quizpage").style.display = "block"; 
     document.getElementById("timeleft").style.display= "block";
     document.getElementById("highscore").style.display = "block";
 });
