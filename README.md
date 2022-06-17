@@ -16,7 +16,7 @@
 ## ScreenShot
 * Screenshots:
 
-![screenshot](./assets/image/screenshot.png)
+![screenshot](./assets/image/screenshot.PNG)
 
 ## Website
 
